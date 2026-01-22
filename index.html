@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" href="assets/icons/test_favicon.ico" type="image/x-icon">
     <title>FitLife - Фитнес-клуб</title>
     <!-- Bootstrap CSS -->
@@ -13,14 +13,15 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <!-- Header and Hero Carousel from previous implementation -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <!-- Навигация -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm py-3">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand fw-bold fs-4" href="#">
                     <span class="text-primary">Fit</span>Life
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
@@ -36,11 +37,13 @@
                         </li>
                     </ul>
                     <div class="d-flex align-items-center">
-                        <div class="contact-info me-4 d-none d-lg-block">
-                            <i class="bi bi-telephone me-1"></i> +7 (495) 123-45-67
+                        <div class="contact-info me-4 d-none d-lg-flex align-items-center">
+                            <i class="bi bi-telephone me-1"></i> 
+                            <span>+7 (495) 123-45-67</span>
                         </div>
-                        <a href="/account" class="btn btn-account text-white px-3 py-2">
-                            <i class="bi bi-person-circle me-1"></i> Личный кабинет
+                        <a href="/account" class="btn btn-primary text-white px-3 py-2">
+                            <i class="bi bi-person-circle me-1"></i> 
+                            <span class="d-none d-md-inline">Личный кабинет</span>
                         </a>
                     </div>
                 </div>
@@ -48,87 +51,83 @@
         </nav>
     </header>
 
-    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-pause="false" data-bs-touch="true" interval="10000">
-        <!-- Carousel content from previous implementation -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <!-- Герой (Hero) секция с каруселью -->
+    <section class="hero-section">
+        <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-pause="false" data-bs-interval="10000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('assets/img/pustaya_kartinka.png')">
+                    <div class="hero-content">
+                        <h1 class="display-2 fw-bold">Твой путь к идеальному телу</h1>
+                        <p class="fs-3 mb-4">Профессиональные тренировки с лучшими тренерами Москвы</p>
+                        <a href="#programs" class="btn btn-primary btn-lg px-5 py-3">Подробнее</a>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('assets/img/pustaya_kartinka.png')">
+                    <div class="hero-content">
+                        <h1 class="display-2 fw-bold">Современные залы премиум-класса</h1>
+                        <p class="fs-3 mb-4">Оборудование последнего поколения и комфортные зоны отдыха</p>
+                        <a href="#centers" class="btn btn-primary btn-lg px-5 py-3">Подробнее</a>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('assets/img/pustaya_kartinka.png')">
+                    <div class="hero-content">
+                        <h1 class="display-2 fw-bold">Групповые занятия для всех уровней</h1>
+                        <p class="fs-3 mb-4">Йога, пилатес, кроссфит и другие направления под руководством опытных инструкторов</p>
+                        <a href="/schedule" class="btn btn-primary btn-lg px-5 py-3">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+            </button>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('assets/img/pustaya_kartinka.png')">
-                <div class="hero-content">
-                    <h1>Твой путь к идеальному телу</h1>
-                    <p>Профессиональные тренировки с лучшими тренерами Москвы</p>
-                    <a href="#programs" class="btn btn-hero">Подробнее</a>
-                </div>
-            </div>
-            <div class="carousel-item" style="background-image: url('assets/img/pustaya_kartinka.png')">
-                <div class="hero-content">
-                    <h1>Современные залы премиум-класса</h1>
-                    <p>Оборудование последнего поколения и комфортные зоны отдыха</p>
-                    <a href="#centers" class="btn btn-hero">Подробнее</a>
-                </div>
-            </div>
-            <div class="carousel-item" style="background-image: url('assets/img/pustaya_kartinka.png')">
-                <div class="hero-content">
-                    <h1>Групповые занятия для всех уровней</h1>
-                    <p>Йога, пилатес, кроссфит и другие направления под руководством опытных инструкторов</p>
-                    <a href="/schedule" class="btn btn-hero">Подробнее</a>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Предыдущий</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Следующий</span>
-        </button>
-    </div>
+    </section>
 
-    <!-- Fitness Centers Section -->
-    <section id="fitness-centers" class="py-5 bg-light">
+    <!-- Секция фитнес-центров -->
+    <section id="fitness-centers" class="py-6 bg-light">
         <div class="container">
-            <div class="section-title mb-5">
-                <h2 class="mb-3">Наши фитнес-центры</h2>
-                <p class="text-muted">Современные клубы по всему городу с профессиональным оборудованием и опытными тренерами</p>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Наши фитнес-центры</h2>
+                <p class="text-muted fs-5">Современные клубы по всему городу с профессиональным оборудованием и опытными тренерами</p>
             </div>
-            
             <div class="row g-4">
-                <!-- Center Card 1 -->
+                <!-- Центр 1 -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="center-card" data-bs-toggle="modal" data-bs-target="#centerModal1">
-                        <img src="assets\img\pustaya_kartinka.png" 
-                             alt="Фитнес-центр на Ленинском проспекте" class="center-img">
-                        <div class="center-content">
-                            <h3 class="center-title">Ленинский проспект</h3>
-                            <p class="center-address">Ленинский проспект, 45</p>
+                    <div class="card center-card h-100 border-1 shadow-sm overflow-hidden cursor-pointer" data-bs-toggle="modal" data-bs-target="#centerModal1">
+                        <img src="assets/img/pustaya_kartinka.png" alt="Фитнес-центр на Ленинском проспекте" class="card-img-top">
+                        <div class="card-body text-center p-4">
+                            <h3 class="h4 mb-1">Ленинский проспект</h3>
+                            <p class="text-muted mb-0">Ленинский проспект, 45</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Center Card 2 -->
+                <!-- Центр 2 -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="center-card" data-bs-toggle="modal" data-bs-target="#centerModal2">
-                        <img src="assets\img\pustaya_kartinka.png" 
-                             alt="Фитнес-центр в Сокольниках" class="center-img">
-                        <div class="center-content">
-                            <h3 class="center-title">Сокольники</h3>
-                            <p class="center-address">Сокольническая площадь, 8</p>
+                    <div class="card center-card h-100 border-1 shadow-sm overflow-hidden cursor-pointer" data-bs-toggle="modal" data-bs-target="#centerModal2">
+                        <img src="assets/img/pustaya_kartinka.png" alt="Фитнес-центр в Сокольниках" class="card-img-top">
+                        <div class="card-body text-center p-4">
+                            <h3 class="h4 mb-1">Сокольники</h3>
+                            <p class="text-muted mb-0">Сокольническая площадь, 8</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Center Card 3 -->
+                <!-- Центр 3 -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="center-card" data-bs-toggle="modal" data-bs-target="#centerModal3">
-                        <img src="assets\img\pustaya_kartinka.png" 
-                             alt="Фитнес-центр на Новом Арбате" class="center-img">
-                        <div class="center-content">
-                            <h3 class="center-title">Новый Арбат</h3>
-                            <p class="center-address">Новый Арбат, 22</p>
+                    <div class="card center-card h-100 border-1 shadow-sm overflow-hidden cursor-pointer" data-bs-toggle="modal" data-bs-target="#centerModal3">
+                        <img src="assets/img/pustaya_kartinka.png" alt="Фитнес-центр на Новом Арбате" class="card-img-top">
+                        <div class="card-body text-center p-4">
+                            <h3 class="h4 mb-1">Новый Арбат</h3>
+                            <p class="text-muted mb-0">Новый Арбат, 22</p>
                         </div>
                     </div>
                 </div>
@@ -136,109 +135,106 @@
         </div>
     </section>
 
-    <!-- Modals for each center -->
-    <!-- Modal 1 -->
+    <!-- Модальные окна для центров -->
     <div class="modal fade" id="centerModal1" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Фитнес-центр на Ленинском проспекте</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white border-0">
+                    <h5 class="modal-title fs-3 fw-bold">Фитнес-центр на Ленинском проспекте</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
-                <div class="modal-body">
-                    <img src="assets\img\pustaya_kartinka.png" alt="Фитнес-центр на Ленинском проспекте" class="modal-center-img">
-                    <p class="modal-address">Ленинский проспект, 45</p>
-                    <p class="modal-description">
+                <div class="modal-body p-4">
+                    <img src="assets/img/pustaya_kartinka.png" alt="Фитнес-центр на Ленинском проспекте" class="img-fluid rounded-3 mb-4">
+                    <p class="text-primary fw-bold fs-5 mb-3">Ленинский проспект, 45</p>
+                    <p class="mb-4">
                         Наш флагманский центр площадью более 2000 м² оборудован по последнему слову техники. Здесь вы найдете:
-                        <ul>
-                            <li>Силовые и кардио зоны с оборудованием Technogym</li>
-                            <li>3 зала для групповых занятий (йога, пилатес, функциональный тренинг)</li>
-                            <li>Зону кроссфита с профессиональным покрытием</li>
-                            <li>Спа-зону с сауной, хамамом и джакузи</li>
-                            <li>Бассейн 25 метров с системой гидромассажа</li>
-                        </ul>
                     </p>
-                    <a href="/center/leninsky" class="btn btn-outline-primary btn-lg w-100 mt-3">Перейти на страницу клуба</a>
-                    <div class="modal-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.431583968232!2d37.5833371763285!3d55.72378340647511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a6d6b8d539b%3A0x5a8e68e2a0d86941!2z0JLRgNC10LTQsNGC0LjQutC4!5e0!3m2!1sru!2sru!4v1719838027643!5m2!1sru!2sru" 
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item border-0 ps-0">• Силовые и кардио зоны с оборудованием Technogym</li>
+                        <li class="list-group-item border-0 ps-0">• 3 зала для групповых занятий (йога, пилатес, функциональный тренинг)</li>
+                        <li class="list-group-item border-0 ps-0">• Зону кроссфита с профессиональным покрытием</li>
+                        <li class="list-group-item border-0 ps-0">• Спа-зону с сауной, хамамом и джакузи</li>
+                        <li class="list-group-item border-0 ps-0">• Бассейн 25 метров с системой гидромассажа</li>
+                    </ul>
+                    <a href="/center/leninsky" class="btn btn-outline-primary btn-lg w-100 mb-4">Перейти на страницу клуба</a>
+                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.431583968232!2d37.5833371763285!3d55.72378340647511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a6d6b8d539b%3A0x5a8e68e2a0d86941!2z0JLRgNC10LTQsNGC0LjQutC4!5e0!3m2!1sru!2sru!4v1719838027643!5m2!1sru!2sru"
+                            allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal 2 -->
     <div class="modal fade" id="centerModal2" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Фитнес-центр в Сокольниках</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white border-0">
+                    <h5 class="modal-title fs-3 fw-bold">Фитнес-центр в Сокольниках</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
-                <div class="modal-body">
-                    <img src="assets\img\pustaya_kartinka.png" alt="Фитнес-центр в Сокольниках" class="modal-center-img">
-                    <p class="modal-address">Сокольническая площадь, 8</p>
-                    <p class="modal-description">
+                <div class="modal-body p-4">
+                    <img src="assets/img/pustaya_kartinka.png" alt="Фитнес-центр в Сокольниках" class="img-fluid rounded-3 mb-4">
+                    <p class="text-primary fw-bold fs-5 mb-3">Сокольническая площадь, 8</p>
+                    <p class="mb-4">
                         Уютный и современный центр в живописном районе Сокольники:
-                        <ul>
-                            <li>Площадь 1500 м² с панорамными окнами</li>
-                            <li>Зона TRX-тренировок и функционального тренинга</li>
-                            <li>2 зала для групповых занятий с профессиональным покрытием</li>
-                            <li>Солярий и зона массажа</li>
-                            <li>Детская комната с воспитателем</li>
-                        </ul>
                     </p>
-                    <a href="/center/sokolniki" class="btn btn-outline-primary btn-lg w-100 mt-3">Перейти на страницу клуба</a>
-                    <div class="modal-map">
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item border-0 ps-0">• Площадь 1500 м² с панорамными окнами</li>
+                        <li class="list-group-item border-0 ps-0">• Зона TRX-тренировок и функционального тренинга</li>
+                        <li class="list-group-item border-0 ps-0">• 2 зала для групповых занятий с профессиональным покрытием</li>
+                        <li class="list-group-item border-0 ps-0">• Солярий и зона массажа</li>
+                        <li class="list-group-item border-0 ps-0">• Детская комната с воспитателем</li>
+                    </ul>
+                    <a href="/center/sokolniki" class="btn btn-outline-primary btn-lg w-100 mb-4">Перейти на страницу клуба</a>
+                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.6045914383326!2d37.65027337633143!3d55.77658458086021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54ada3c9e0b51%3A0x6c86f6e0e0a0a5a7!2z0KDQsNC70L7Qsiwg0KDQsNC70L7Qsiwg0JrQsNCz0LDQvdCw0YbQsA!5e0!3m2!1sru!2sru!4v1719838639107!5m2!1sru!2sru" 
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal 3 -->
     <div class="modal fade" id="centerModal3" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Фитнес-центр на Новом Арбате</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white border-0">
+                    <h5 class="modal-title fs-3 fw-bold">Фитнес-центр на Новом Арбате</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
-                <div class="modal-body">
-                    <img src="assets\img\pustaya_kartinka.png" alt="Фитнес-центр на Новом Арбате" class="modal-center-img">
-                    <p class="modal-address">Новый Арбат, 22</p>
-                    <p class="modal-description">
+                <div class="modal-body p-4">
+                    <img src="assets/img/pustaya_kartinka.png" alt="Фитнес-центр на Новом Арбате" class="img-fluid rounded-3 mb-4">
+                    <p class="text-primary fw-bold fs-5 mb-3">Новый Арбат, 22</p>
+                    <p class="mb-4">
                         Премиальный фитнес-клуб в самом центре Москвы:
-                        <ul>
-                            <li>Элитное оборудование Life Fitness и Hammer Strength</li>
-                            <li>Персональные тренировочные зоны с кондиционированием</li>
-                            <li>Зал для единоборств с профессиональным покрытием</li>
-                            <li>Спа-комплекс с финской сауной и холодной купелью</li>
-                            <li>Кафе с healthy-меню от шеф-повара</li>
-                        </ul>
                     </p>
-                    <a href="/center/arbat" class="btn btn-outline-primary btn-lg w-100 mt-3">Перейти на страницу клуба</a>
-                    <div class="modal-map">
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item border-0 ps-0">• Элитное оборудование Life Fitness и Hammer Strength</li>
+                        <li class="list-group-item border-0 ps-0">• Персональные тренировочные зоны с кондиционированием</li>
+                        <li class="list-group-item border-0 ps-0">• Зал для единоборств с профессиональным покрытием</li>
+                        <li class="list-group-item border-0 ps-0">• Спа-комплекс с финской сауной и холодной купелью</li>
+                        <li class="list-group-item border-0 ps-0">• Кафе с healthy-меню от шеф-повара</li>
+                    </ul>
+                    <a href="/center/arbat" class="btn btn-outline-primary btn-lg w-100 mb-4">Перейти на страницу клуба</a>
+                    <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.122147294543!2d37.58338167633464!3d55.74902758082289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b30c4a0e6dd%3A0xa5b69a0c0a0b8c0a!2z0JLRgNC10LTQsNGC0LjQutC4LCDQodCR0L7Qu9C10LrRgdC60LjQuSDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1sru!2sru!4v1719838898468!5m2!1sru!2sru" 
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Features Carousel Section -->
-    <section id="features" class="features" data-bs-theme="dark">
+    <!-- Преимущества (Features) карусель -->
+    <section id="features" class="py-6 bg-light">
         <div class="container">
-            <div class="section-title mb-5 features-title">
-                <h2 class="mb-3">Почему выбирают нас</h2>
-                <p class="fst-normal">Уникальные преимущества нашего фитнес-клуба, которые делают тренировки эффективными и комфортными</p>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Почему выбирают нас</h2>
+                <p class="fs-5 text-muted">Уникальные преимущества нашего фитнес-клуба, которые делают тренировки эффективными и комфортными</p>
             </div>
             
-            <div id="featuresCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="7000">
+            <div id="featuresCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-theme="dark" data-bs-interval="7000">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -246,23 +242,21 @@
                     <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
                 
-                <div class="carousel-inner">
+                <div class="carousel-inner rounded-4 shadow-sm overflow-hidden">
                     <!-- Feature 1 -->
                     <div class="carousel-item active">
-                        <div class="feature-item">
-                            <div class="row g-0">
-                                <div class="col-md-6">
-                                    <img src="assets\img\pustaya_kartinka.png" alt="Профессиональные тренеры" class="feature-img">
-                                </div>
-                                <div class="col-md-6 d-flex align-items-center">
-                                    <div class="feature-content">
-                                        <h3 class="feature-title">Профессиональные тренеры</h3>
-                                        <p class="feature-text">
-                                            Все наши тренеры имеют профильное образование и многолетний опыт работы. 
-                                            Они разработают индивидуальную программу тренировок, учитывая ваши цели, 
-                                            особенности организма и возможные ограничения по здоровью.
-                                        </p>
-                                    </div>
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="assets/img/pustaya_kartinka.png" alt="Профессиональные тренеры" class="img-fluid w-100 h-100">
+                            </div>
+                            <div class="col-md-6 bg-white d-flex align-items-center">
+                                <div class="p-4 p-md-5">
+                                    <h3 class="h2 fw-bold text-primary mb-3">Профессиональные тренеры</h3>
+                                    <p class="fs-5 text-dark">
+                                        Все наши тренеры имеют профильное образование и многолетний опыт работы.
+                                        Они разработают индивидуальную программу тренировок, учитывая ваши цели,
+                                        особенности организма и возможные ограничения по здоровью.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -270,206 +264,201 @@
                     
                     <!-- Feature 2 -->
                     <div class="carousel-item">
-                        <div class="feature-item">
-                            <div class="row g-0">
-                                <div class="col-md-6">
-                                    <img src="assets\img\pustaya_kartinka.png" alt="Современное оборудование" class="feature-img">
-                                </div>
-                                <div class="col-md-6 d-flex align-items-center">
-                                    <div class="feature-content">
-                                        <h3 class="feature-title">Современное оборудование</h3>
-                                        <p class="feature-text">
-                                            В наших залах установлено оборудование последнего поколения от ведущих 
-                                            мировых производителей: Technogym, Life Fitness и Hammer Strength. 
-                                            Это гарантирует безопасность и максимальную эффективность ваших тренировок.
-                                        </p>
-                                    </div>
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="assets/img/pustaya_kartinka.png" alt="Современное оборудование" class="img-fluid w-100 h-100">
+                            </div>
+                            <div class="col-md-6 bg-white d-flex align-items-center">
+                                <div class="p-4 p-md-5">
+                                    <h3 class="h2 fw-bold text-primary mb-3">Современное оборудование</h3>
+                                    <p class="fs-5 text-dark">
+                                        В наших залах установлено оборудование последнего поколения от ведущих 
+                                        мировых производителей: Technogym, Life Fitness и Hammer Strength. 
+                                        Это гарантирует безопасность и максимальную эффективность ваших тренировок.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Feature 3 -->
                     <div class="carousel-item">
-                        <div class="feature-item">
-                            <div class="row g-0">
-                                <div class="col-md-6">
-                                    <img src="assets\img\pustaya_kartinka.png" alt="Групповые занятия" class="feature-img">
-                                </div>
-                                <div class="col-md-6 d-flex align-items-center">
-                                    <div class="feature-content">
-                                        <h3 class="feature-title">Разнообразные групповые занятия</h3>
-                                        <p class="feature-text">
-                                            Более 50 направлений групповых программ: от классической йоги и пилатеса 
-                                            до экстремального кроссфита и танцевальных направлений. Занятия проводят 
-                                            лучшие инструкторы Москвы, а расписание удобно составлено для разных категорий клиентов.
-                                        </p>
-                                    </div>
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="assets/img/pustaya_kartinka.png" alt="Групповые занятия" class="img-fluid w-100 h-100">
+                            </div>
+                            <div class="col-md-6 bg-white d-flex align-items-center">
+                                <div class="p-4 p-md-5">
+                                    <h3 class="h2 fw-bold text-primary mb-3">Разнообразные групповые занятия</h3>
+                                    <p class="fs-5 text-dark">
+                                        Более 50 направлений групповых программ: от классической йоги и пилатеса 
+                                        до экстремального кроссфита и танцевальных направлений. Занятия проводят 
+                                        лучшие инструкторы Москвы, а расписание удобно для разных клиентов.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Feature 4 -->
                     <div class="carousel-item">
-                        <div class="feature-item">
-                            <div class="row g-0">
-                                <div class="col-md-6">
-                                    <img src="assets\img\pustaya_kartinka.png" alt="Дополнительные услуги" class="feature-img">
-                                </div>
-                                <div class="col-md-6 d-flex align-items-center">
-                                    <div class="feature-content">
-                                        <h3 class="feature-title">Дополнительные услуги</h3>
-                                        <p class="feature-text">
-                                            Помимо тренировок, мы предлагаем: спа-процедуры, массаж, питание от шеф-повара, 
-                                            детский клуб с воспитателем, бесплатную парковку и другие сервисы, которые 
-                                            сделают ваше посещение клуба максимально комфортным и продуктивным.
-                                        </p>
-                                    </div>
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="assets/img/pustaya_kartinka.png" alt="Дополнительные услуги" class="img-fluid w-100 h-100">
+                            </div>
+                            <div class="col-md-6 bg-white d-flex align-items-center">
+                                <div class="p-4 p-md-5">
+                                    <h3 class="h2 fw-bold text-primary mb-3">Дополнительные услуги</h3>
+                                    <p class="fs-5 text-dark">
+                                        Помимо тренировок, мы предлагаем: спа-процедуры, массаж, питание от шеф-повара, 
+                                        детский клуб с воспитателем, бесплатную парковку и другие сервисы, которые 
+                                        сделают ваше посещение клуба максимально комфортным и продуктивным.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Carousel Controls -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#featuresCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-prev-icon bg-primary rounded-circle p-2" aria-hidden="true"></span>
                     <span class="visually-hidden">Предыдущий</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#featuresCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon bg-primary rounded-circle p-2" aria-hidden="true"></span>
                     <span class="visually-hidden">Следующий</span>
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact-form" class="contact-section">
+    <!-- Форма контактов -->
+    <section id="contact-form" class="py-6 bg-gradient">
         <div class="container">
-            <div class="section-title mb-5">
-                <h2 class="mb-3">Запишитесь на пробную тренировку</h2>
-                <p class="text-muted">Оставьте ваши контактные данные, и наш менеджер свяжется с вами в ближайшее время</p>
+            <div class="text-center mb-5">
+                <h2 class="section-title mb-3">Запишитесь на пробную тренировку</h2>
+                <p class="text-muted fs-5">Оставьте ваши контактные данные, и наш менеджер свяжется с вами в ближайшее время</p>
             </div>
             
-            <div class="form-container">
-                <div class="row g-0">
-                    <!-- Form Image -->
-                    <div class="col-lg-6 d-none d-lg-block">
-                        <div class="form-image">
-                            <h3>Начните меняться уже сегодня</h3>
-                            <p>Первое пробное занятие бесплатно для всех новых клиентов</p>
-                            <div class="d-flex align-items-center mt-4">
-                                <i class="bi bi-check-circle-fill fs-1 me-3" style="color: #2ecc71;"></i>
-                                <div class="text-start">
-                                    <h5 class="mb-1">Индивидуальный подход</h5>
-                                    <p class="mb-0 opacity-75">Подберем программу под ваши цели</p>
-                                </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="bg-primary text-white rounded-4 h-100 d-flex flex-column justify-content-center p-5">
+                        <h3 class="display-5 fw-bold mb-3">Начните меняться уже сегодня</h3>
+                        <p class="fs-4 mb-4">Первое пробное занятие бесплатно для всех новых клиентов</p>
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="bi bi-check-circle-fill fs-1 text-success me-3 mt-1"></i>
+                            <div>
+                                <h5 class="mb-1">Индивидуальный подход</h5>
+                                <p class="mb-0 opacity-75">Подберем программу под ваши цели</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Form Content -->
-                    <div class="col-lg-6">
-                        <div class="form-content">
-                            <h3 class="form-title">Ваши данные</h3>
-                            <form id="registrationForm">
-                                <div class="form-group">
-                                    <label for="branch" class="form-label">Выберите филиал <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="branch" required>
-                                        <option value="">Выберите ближайший филиал</option>
-                                        <option value="leninsky">Ленинский проспект</option>
-                                        <option value="sokolniki">Сокольники</option>
-                                        <option value="arbat">Новый Арбат</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="fullName" class="form-label">Имя Фамилия <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="fullName" placeholder="Введите ваше имя и фамилию" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="example@mail.ru">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">Телефон <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control" id="phone" placeholder="+7 (___) ___-__-__" required>
-                                </div>
-                                
-                                <button type="submit" class="btn btn-submit">Записаться на пробную тренировку</button>
-                                
-                                <div class="form-note">
-                                    <p class="mb-0">Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="#" class="text-decoration-none" style="color: var(--primary-color);">политикой конфиденциальности</a></p>
-                                </div>
-                            </form>
-                        </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-white rounded-4 shadow-sm p-4 p-md-5">
+                        <h3 class="h2 fw-bold mb-4 text-primary">Ваши данные</h3>
+                        <form id="registrationForm">
+                            <div class="mb-4">
+                                <label for="branch" class="form-label fw-medium">Выберите филиал <span class="text-danger">*</span></label>
+                                <select class="form-select form-select-lg rounded-3" id="branch" required>
+                                    <option value="">Выберите ближайший филиал</option>
+                                    <option value="leninsky">Ленинский проспект</option>
+                                    <option value="sokolniki">Сокольники</option>
+                                    <option value="arbat">Новый Арбат</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="fullName" class="form-label fw-medium">Имя Фамилия <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-lg rounded-3" id="fullName" 
+                                    placeholder="Введите ваше имя и фамилию" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="form-label fw-medium">Email</label>
+                                <input type="email" class="form-control form-control-lg rounded-3" id="email" 
+                                    placeholder="example@mail.ru">
+                            </div>
+                            <div class="mb-4">
+                                <label for="phone" class="form-label fw-medium">Телефон <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control form-control-lg rounded-3" id="phone" 
+                                    placeholder="+7 (___) ___-__-__" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 py-3 rounded-3 mb-4">
+                                Записаться на пробную тренировку
+                            </button>
+                            <div class="small text-muted text-center">
+                                Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с 
+                                <a href="#" class="text-decoration-none text-primary">политикой конфиденциальности</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="footer">
+    <!-- Футер -->
+    <footer class="footer bg-dark text-white pb-4">
         <div class="container">
-            <div class="row">
-                <!-- Logo Column -->
-                <div class="col-md-3 mb-4 mb-md-0">
-                    <div class="footer-logo">
-                        Fit<span>Life</span>
+            <div class="row g-5">
+                <!-- Логотип и описание -->
+                <div class="col-md-3">
+                    <div class="footer-logo mb-4">
+                        <span class="fs-2 fw-bold">Fit<span class="text-primary">Life</span></span>
                     </div>
-                    <p class="mt-3" style="max-width: 250px; color: #b0b0b0;">
+                    <p class="opacity-75">
                         Ваш путь к здоровому образу жизни. Профессиональные тренировки в современных фитнес-центрах.
                     </p>
                 </div>
                 
-                <!-- Links Columns -->
-                <div class="col-md-3 mb-4 mb-md-0">
-                    <h5 style="color: white; margin-bottom: 1.5rem;">Клубы</h5>
-                    <ul class="footer-links">
-                        <li><a href="#fitness-centers">Фитнес-центры</a></li>
-                        <li><a href="#">Карта филиалов</a></li>
-                        <li><a href="#">Акции и скидки</a></li>
-                        <li><a href="#">Партнерские программы</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-md-3 mb-4 mb-md-0">
-                    <h5 style="color: white; margin-bottom: 1.5rem;">О нас</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Наши тренеры</a></li>
-                        <li><a href="#">Отзывы клиентов</a></li>
-                        <li><a href="#">Вакансии</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Legal Links Column -->
+                <!-- Ссылки: Клубы -->
                 <div class="col-md-3">
-                    <div class="footer-legal">
-                        <a href="#">Договор оферты</a>
-                        <a href="#">Правила фитнес-центра</a>
-                        <a href="#">Политика конфиденциальности</a>
-                        <a href="#">Пользовательское соглашение</a>
-                        <a href="#">Раскрытие информации</a>
-                        <a href="#">Согласие на обработку персональных данных</a>
+                    <h5 class="mb-4 pb-2 border-bottom border-secondary">Клубы</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#fitness-centers" class="text-decoration-none text-white opacity-75 hover-opacity-100">Фитнес-центры</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">Карта филиалов</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">Акции и скидки</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">Партнерские программы</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Ссылки: О нас -->
+                <div class="col-md-3">
+                    <h5 class="mb-4 pb-2 border-bottom border-secondary">О нас</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">О компании</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">Наши тренеры</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">Отзывы клиентов</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">Вакансии</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Юридические ссылки -->
+                <div class="col-md-3">
+                    <h5 class="mb-4 pb-2 border-bottom border-secondary">Документы</h5>
+                    <div class="d-flex flex-column footer-legal">
+                        <a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100 mb-2">Договор оферты</a>
+                        <a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100 mb-2">Правила фитнес-центра</a>
+                        <a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100 mb-2">Политика конфиденциальности</a>
+                        <a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100 mb-2">Пользовательское соглашение</a>
                     </div>
                 </div>
             </div>
             
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span>© 2019 — 2026</span>
+            <!-- Нижняя часть футера -->
+            <div class="footer-bottom mt-5 pt-4 border-top border-secondary">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="mb-2 mb-md-0">
+                        <span>© 2019 — 2026 FitLife. Все права защищены.</span>
                     </div>
-                    <div>
-                        <a href="#" class="footer-icon">
-                            <i class="bi bi-airplane"></i>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white opacity-75 hover-opacity-100 fs-4">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+                        <a href="#" class="text-white opacity-75 hover-opacity-100 fs-4">
+                            <i class="bi bi-vk"></i>
+                        </a>
+                        <a href="#" class="text-white opacity-75 hover-opacity-100 fs-4">
+                            <i class="bi bi-instagram"></i>
                         </a>
                     </div>
                 </div>
@@ -477,38 +466,38 @@
         </div>
     </footer>
 
-    <!-- Floating Call Button -->
-    <button type="button" class="call-button" data-bs-toggle="modal" data-bs-target="#callModal">
-        <i class="bi bi-telephone-fill"></i>
+    <!-- Плавающая кнопка обратного звонка -->
+    <button type="button" class="btn btn-primary rounded-circle btn-call position-fixed bottom-0 end-0 m-4 shadow-lg" 
+            data-bs-toggle="modal" data-bs-target="#callModal" style="z-index: 1050;">
+        <i class="bi bi-telephone-fill fs-3"></i>
     </button>
 
-    <!-- Quick Contact Modal -->
+    <!-- Модальное окно обратного звонка -->
     <div class="modal fade" id="callModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                        <h3 class="modal-title text-center">Закажите обратный звонок</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                    </div>
-                <div class="modal-contact">
+            <div class="modal-content rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <h3 class="modal-title text-center fw-bold mb-4">Закажите обратный звонок</h3>
                     <form id="quickContactForm">
-                        <div class="form-group">
+                        <div class="mb-4">
                             <label for="quickName" class="form-label fw-medium">Ваше имя</label>
-                            <input type="text" class="form-control" id="quickName" placeholder="Иван Петров" required>
+                            <input type="text" class="form-control form-control-lg rounded-3" id="quickName" 
+                                placeholder="Иван Петров" required>
                         </div>
-                        
-                        <div class="form-group">
+                        <div class="mb-4">
                             <label for="quickPhone" class="form-label fw-medium">Номер телефона <span class="text-danger">*</span></label>
-                            <input type="tel" class="form-control" id="quickPhone" placeholder="+7 (___) ___-__-__" required>
+                            <input type="tel" class="form-control form-control-lg rounded-3" id="quickPhone" 
+                                placeholder="+7 (___) ___-__-__" required>
                         </div>
-                        
-                        <button type="submit" class="btn btn-submit">Позвонить мне</button>
-                        
-                        <div class="mt-3 text-center">
-                            <small class="text-muted">
-                                Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с<br>
-                                <a href="#" class="text-decoration-none" style="color: var(--primary-color);">политикой конфиденциальности</a>
-                            </small>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 py-3 rounded-3 mb-4">
+                            Позвонить мне
+                        </button>
+                        <div class="text-center small text-muted">
+                            Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с<br>
+                            <a href="#" class="text-decoration-none text-primary">политикой конфиденциальности</a>
                         </div>
                     </form>
                 </div>
@@ -519,8 +508,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
-    <!-- Form Validation Script -->
     <script src="scripts/scripts.js"></script>
 </body>
 </html>
