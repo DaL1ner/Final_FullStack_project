@@ -188,7 +188,7 @@ body {
 }
 
 .modal-header {
-    background: linear-gradient(135deg, var(--secondary-color), #094683);
+    background: var(--secondary-color);
     border: none;
     padding: 1.5rem 2rem 0;
 }
@@ -340,7 +340,7 @@ body {
 .form-image {
     height: 100%;
     min-height: 400px;
-    background: linear-gradient(rgba(52, 152, 219, 0.85), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1571019613427-9c6c46a8c1e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+    background: linear-gradient(rgba(52, 152, 219, 0.74), rgba(47, 99, 154, 0.449)), url('assets/img/pustaya_kartinka.png');
     background-size: cover;
     background-position: center;
     display: flex;
