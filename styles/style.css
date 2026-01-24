@@ -144,6 +144,12 @@ body {
     background-size: 16px;
 }
 
+/* Стили для аккордеона FAQ */
+.accordion-button:not(.collapsed) {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
 /* Форма контактов */
 .bg-gradient {
     background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
