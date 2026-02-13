@@ -9,4 +9,4 @@
 ## Используемые фреймворки и ассеты
 - Bootstrap 5
 ## Ссылки
-- [Публичная страница на GitHub Pages](https://dal1ner.github.io/Final_frontend_project/)
+- [Публичная страница на GitHub Pages](https://dal1ner.github.io/Final_FullStack_project/)
