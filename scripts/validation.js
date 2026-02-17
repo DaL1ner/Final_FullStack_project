@@ -2,6 +2,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ДЛЯ ВАЛИДАЦИИ ==========
     
+    // Отправка логов форм
+    function getLog(fullnameValue, phoneValue, branch = 'None', emailValue = 'None') {
+        const formData = {
+            branch: branch,
+            fullname: fullnameValue,
+            phone: phoneValue,
+            email: emailValue
+        };
+
+        const event = new CustomEvent('formValid', { detail: formData });
+        document.dispatchEvent(event);
+    }
     function showFieldError(field, message) {
         // Очищаем предыдущие ошибки
         clearFieldError(field);
@@ -100,7 +112,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Если есть ошибки - останавливаем отправку
-            if (hasError) return;
+            if (hasError) {
+                return;
+            }
+            else {
+                getLog(fullName, phone, branch, email)
+            }
             
             // Создание модального окна об успешной отправке
             const modalHTML = `
@@ -185,7 +202,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Если есть ошибки - останавливаем отправку
-            if (hasError) return;
+            if (hasError) {
+                return;
+            }
+            else {
+                getLog(quickName, quickPhone)
+            }
             
             // Создание модального окна об успешной отправке
             const modalHTML = `
