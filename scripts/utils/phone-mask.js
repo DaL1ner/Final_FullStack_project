@@ -1,30 +1,50 @@
 // Логика маски ввода телефона
 
-export function initPhoneMask(inputElement) {
-    if (!inputElement) return;
+function setCaretPosition(elem, position) {
+    if (elem.setSelectionRange) {
+        // Для современных браузеров
+        elem.setSelectionRange(position, position);
+    } else if (elem.createTextRange) {
+        // Для старых IE (на случай поддержки legacy)
+        const range = elem.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', position);
+        range.moveStart('character', position);
+        range.select();
+    }
+}
+export function initPhoneMask(selector) {
+    const $element = selector instanceof HTMLElement ? $(selector) : $(selector);
+    
+    if ($element.length === 0) {
+        console.warn('Элемент для маски телефона не найден:', selector);
+        return;
+    }
 
-    // Устанавливаем начальное значение
-    if (!inputElement.value) inputElement.value = '+7 ';
+    // Получаем доступ к DOM элементу для работы с курсором
+    const inputElement = $element[0];
 
-    inputElement.addEventListener('input', function(e) {
-        let value = e.target.value.replace(/\D/g, '');
-        
-        if (value.length === 0) {
-            e.target.value = '+7 ';
-            return;
+    // Маска: +7 (999) 999-99-99
+    $element.mask('+7 (999) 999-99-99', {
+        placeholder: '+7 (___) ___-__-__'
+    });
+
+    // Функция установки курсора после "+7 ("
+    const focusHandler = function() {
+        // Небольшая задержка, чтобы маска успела примениться браузером
+        setTimeout(() => {
+            setCaretPosition(inputElement, 4);
+        }, 0);
+    };
+
+    // Вешаем обработчики на фокус и клик
+    // Клик нужен, чтобы перехватить момент, если пользователь кликнул в середину строки
+    $element.on('focus click', focusHandler);
+
+    // При потере фокуса очищаем поле, если введены только префикс
+    $element.on('blur', function() {
+        if ($(this).val() === '+7 (') {
+            $(this).val('');
         }
-        
-        if (value[0] !== '7') value = '7' + value;
-        
-        let formatted = '+7';
-        if (value.length > 1) {
-            formatted += ' (' + value.substring(1, 4);
-            if (value.length >= 4) formatted += ') ';
-            if (value.length >= 4) formatted += value.substring(4, 7);
-            if (value.length >= 7) formatted += '-' + value.substring(7, 9);
-            if (value.length >= 9) formatted += '-' + value.substring(9, 11);
-        }
-        
-        e.target.value = formatted;
     });
 }

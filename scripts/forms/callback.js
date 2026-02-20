@@ -2,7 +2,7 @@
 
 
 import { isValidName, isValidPhone } from '../utils/validators.js';
-import { showFieldError, clearFormErrors } from '../utils/ui-helpers.js';
+import { showFieldError, clearFormErrors, clearFieldError } from '../utils/ui-helpers.js';
 import { showSuccessModal } from '../components/success-modal.js';
 import { initPhoneMask } from '../utils/phone-mask.js';
 
@@ -10,7 +10,7 @@ export function initCallbackForm() {
     const form = document.getElementById('quickContactForm');
     if (!form) return;
 
-    initPhoneMask(form.querySelector('#quickPhone'));
+    initPhoneMask('#quickPhone');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -25,7 +25,8 @@ export function initCallbackForm() {
             hasError = true;
         }
 
-        if (!quickPhone.value.trim() || !isValidPhone(quickPhone.value)) {
+        const rawPhone = quickPhone.value.replace(/\D/g, '');
+        if (!rawPhone || rawPhone.length !== 11) {
             showFieldError(quickPhone, 'Введите номер телефона');
             hasError = true;
         }
@@ -41,8 +42,9 @@ export function initCallbackForm() {
         );
 
         form.reset();
+        $(quickPhone).val('');
         
-        // Закрыть модальное окно звонка, если оно открыто
+        // Закрыть модальное окно звонка
         const callModalEl = document.getElementById('callModal');
         if(callModalEl) {
             const modalInstance = bootstrap.Modal.getInstance(callModalEl);

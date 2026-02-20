@@ -2,7 +2,7 @@
 
 
 import { isValidName, isValidPhone, isValidEmail } from '../utils/validators.js';
-import { showFieldError, clearFormErrors } from '../utils/ui-helpers.js';
+import { showFieldError, clearFormErrors, clearFieldError } from '../utils/ui-helpers.js';
 import { showSuccessModal } from '../components/success-modal.js';
 import { initPhoneMask } from '../utils/phone-mask.js';
 
@@ -10,8 +10,8 @@ export function initRegistrationForm() {
     const form = document.getElementById('registrationForm');
     if (!form) return;
 
-    // Инициализация маски
-    initPhoneMask(form.querySelector('#phone'));
+    // Инициализация маски (теперь работает через jQuery внутри функции)
+    initPhoneMask('#phone');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -24,14 +24,19 @@ export function initRegistrationForm() {
         const email = form.querySelector('#email');
 
         // Валидация
-        if (!branch.value) { showFieldError(branch, 'Выберите филиал'); hasError = true; }
+        if (!branch.value) { 
+            showFieldError(branch, 'Выберите филиал'); 
+            hasError = true; 
+        }
         
         if (!fullName.value.trim() || !isValidName(fullName.value)) {
             showFieldError(fullName, 'Введите корректное имя и фамилию');
             hasError = true;
         }
 
-        if (!phone.value.trim() || !isValidPhone(phone.value)) {
+        // Валидация телефона (убираем пробелы и скобки для проверки)
+        const rawPhone = phone.value.replace(/\D/g, '');
+        if (!rawPhone || rawPhone.length !== 11) {
             showFieldError(phone, 'Введите корректный номер телефона');
             hasError = true;
         }
@@ -43,7 +48,7 @@ export function initRegistrationForm() {
 
         if (hasError) return;
 
-        // Успех
+        // Отправка данных
         dispatchFormEvent(fullName.value, phone.value, branch.value, email.value);
         
         showSuccessModal(
@@ -53,13 +58,13 @@ export function initRegistrationForm() {
         );
 
         form.reset();
+        // Сброс маски визуально
+        $(phone).val(''); 
     });
 
     // Очистка ошибок при фокусе
     form.querySelectorAll('input, select').forEach(field => {
-        field.addEventListener('focus', () => clearFormErrors(form)); // Упрощено: чистим всю форму или можно точечно
-        field.addEventListener('focus', () => field.classList.remove('is-invalid')); 
-        // Примечание: для идеальной очистки нужно удалять соседний div.error, но для краткости оставим так или используем ui-helpers.clearFieldError(field)
+        field.addEventListener('focus', () => clearFieldError(field));
     });
 }
 

@@ -10,15 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
     initRegistrationForm();
     initCallbackForm();
     
-    // Автофокус для модального окна звонка (остался тут, так как это специфика UI)
+    // Автофокус для модального окна звонка
     const callModalElement = document.getElementById('callModal');
     if (callModalElement) {
         callModalElement.addEventListener('shown.bs.modal', function () {
             const quickName = document.getElementById('quickName');
             if(quickName) quickName.focus();
             
+            // Инициализация маски при открытии модалки (на случай динамической загрузки)
             const quickPhone = document.getElementById('quickPhone');
-            if (quickPhone && !quickPhone.value) quickPhone.value = '+7 ';
+            if (quickPhone && !quickPhone.value) {
+                // Маска уже должна быть инициализирована в initCallbackForm, 
+                // но можно вызвать повторно для надежности
+                // initPhoneMask(quickPhone); 
+            }
         });
     }
 });
